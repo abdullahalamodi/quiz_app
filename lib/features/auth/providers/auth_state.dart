@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:quiz_app/core/models/user_model.dart';
+import 'package:quiz_app/models/user_model.dart';
 
 part 'auth_state.freezed.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
-import 'package:quiz_app/theme/theme_colors.dart';
+import 'package:quiz_app/core/theme/theme_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({

@@ -9,7 +9,7 @@ import 'package:quiz_app/features/auth/providers/auth_state.dart';
 import 'package:quiz_app/features/auth/providers/auth_provider.dart';
 import 'package:quiz_app/features/common_widgets/loading_overlay.dart';
 import 'package:quiz_app/features/common_widgets/pin_code_field.dart';
-import 'package:quiz_app/features/home/home_page.dart';
+import 'package:quiz_app/features/layout/layout_landing.dart';
 
 class VerfiyOtpPage extends ConsumerWidget {
   const VerfiyOtpPage({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class VerfiyOtpPage extends ConsumerWidget {
     if (state is LoggedIn) {
       if (state.userModel.name != null) {
         context.push(
-          builder: (_) => const HomePage(),
+          builder: (_) => const LayoutLanding(),
         );
       } else {
         context.push(

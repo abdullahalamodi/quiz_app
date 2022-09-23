@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl_phone_field/phone_number.dart' as intl;
 import 'package:phone_number/phone_number.dart';
-import 'package:quiz_app/core/services/api_services.dart';
-import 'package:quiz_app/core/services/shared_preferences_services.dart';
+import 'package:quiz_app/services/api_services.dart';
+import 'package:quiz_app/services/shared_preferences_services.dart';
 import 'package:quiz_app/features/auth/providers/auth_state.dart';
 
 final authProvider =

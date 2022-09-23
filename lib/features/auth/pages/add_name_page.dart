@@ -7,7 +7,7 @@ import 'package:quiz_app/features/auth/providers/auth_provider.dart';
 import 'package:quiz_app/features/auth/providers/auth_state.dart';
 import 'package:quiz_app/features/common_widgets/custom_text_field.dart';
 import 'package:quiz_app/features/common_widgets/loading_overlay.dart';
-import 'package:quiz_app/features/home/home_page.dart';
+import 'package:quiz_app/features/layout/layout_landing.dart';
 
 class AddNamePage extends ConsumerWidget {
   const AddNamePage({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class AddNamePage extends ConsumerWidget {
     listenToLoadingState(context, state);
     if (state is NameAdd) {
       context.push(
-        builder: (_) => const HomePage(),
+        builder: (_) => const LayoutLanding(),
       );
     } else if (state is Error) {
       ScaffoldMessenger.of(context).showSnackBar(
