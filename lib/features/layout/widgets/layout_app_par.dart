@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:quiz_app/core/constants/fixed_assets.dart';
 
 class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
   const LayoutAppBar({
@@ -11,10 +13,13 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Row(
-          children: const [
-            Text('QuizU'),
-            SizedBox(width: 12),
-            Icon(Icons.workspaces_outlined),
+          children: [
+            const Text('QuizU'),
+            const SizedBox(width: 12),
+            SvgPicture.asset(
+              FixedAssets.qMark,
+              height: 30,
+            ),
           ],
         ),
       ),
