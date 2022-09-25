@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:quiz_app/features/questions/timer_widget.dart';
 
 class QuestionsPage extends StatelessWidget {
   const QuestionsPage({Key? key}) : super(key: key);
@@ -15,17 +16,11 @@ class QuestionsPage extends StatelessWidget {
             Center(
               child: Hero(
                 tag: 'intro',
-                child: ElevatedButton(
-                  onPressed: () => log('mm'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      'quiz me',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
-                  ),
+                child: TimerWidget(
+                  duration: 120, // 120 secound = 2 minutes
+                  onComplete: () {
+                    log('completed');
+                  },
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
@@ -52,10 +53,23 @@ class _HomePageState extends State<HomePage> {
               duration: const Duration(seconds: 1),
               top: r,
               curve: Curves.easeInOutBack,
-              child: Text(
-                'Are you ready \nto test your knowledge \nand challenge others?',
+              child: DefaultTextStyle(
                 style: context.tthm.titleLarge!.copyWith(
-                  fontSize: 26,
+                  fontSize: 26.0,
+                ),
+                child: FutureBuilder(
+                  future:
+                      Future.delayed(const Duration(seconds: 1), () => true),
+                  builder: (context, snapshot) => snapshot.hasData
+                      ? AnimatedTextKit(
+                          totalRepeatCount: 1,
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                                speed: const Duration(milliseconds: 70),
+                                'Are you ready \nto test your knowledge \nand challenge others?'),
+                          ],
+                        )
+                      : const SizedBox.shrink(),
                 ),
               ),
             ),
