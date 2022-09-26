@@ -15,7 +15,7 @@ class TimerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: 1),
-      curve: Curves.easeOutCubic,
+      curve: Curves.linear,
       duration: Duration(seconds: duration),
       onEnd: onComplete,
       builder: (context, value, _) => Stack(
@@ -39,7 +39,7 @@ class TimerWidget extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                '${(duration - (value * duration)).toInt()}',
+                _formatedTime(value, duration),
                 style: context.tthm.titleLarge!.copyWith(
                   color: Colors.white,
                   fontSize: 22,
@@ -54,13 +54,20 @@ class TimerWidget extends StatelessWidget {
 
   MaterialColor _getColor(count) {
     if (count > (duration * .8)) {
-      return Colors.green;
-    } else if (count > (duration * .6)) {
-      return Colors.yellow;
-    } else if (count > (duration * .5)) {
-      return Colors.orange;
-    } else {
       return Colors.red;
+    } else if (count > (duration * .6)) {
+      return Colors.orange;
+    } else if (count > (duration * .5)) {
+      return Colors.amber;
+    } else {
+      return Colors.green;
     }
+  }
+
+  String _formatedTime(double value, int duration) {
+    final time = duration - (value * duration);
+    final minutes = time ~/ 60;
+    final secounds = (time % 60).toInt();
+    return '$minutes:$secounds';
   }
 }

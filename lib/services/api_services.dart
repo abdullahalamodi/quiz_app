@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:quiz_app/models/leaderboard_model.dart';
+import 'package:quiz_app/models/question_model.dart';
 import 'package:quiz_app/models/user_model.dart';
 import 'package:quiz_app/services/shared_preferences_services.dart';
 
@@ -107,6 +108,56 @@ class ApiServices {
       debugPrint(e.toString());
     }
     return [];
+  }
+
+  Future<List<QuestionModel>> getQuestionsList({
+    required String token,
+  }) async {
+    final headers = {
+      'Authorization': 'Bearer $token',
+    };
+    final uri = Uri(scheme: 'https', host: _baseUrl, path: '/Questions');
+
+    try {
+      final resposne = await http.get(uri, headers: headers);
+      if (resposne.statusCode == 200 || resposne.statusCode == 201) {
+        log(resposne.body);
+        final data = json.decode(resposne.body);
+        final questiosList = List<QuestionModel>.from(
+            data.map((e) => QuestionModel.fromJson(e)));
+        return questiosList;
+      }
+      debugPrint(resposne.statusCode.toString());
+      debugPrint(resposne.body);
+    } catch (e) {
+      debugPrint('getQuestionsList');
+      debugPrint(e.toString());
+    }
+    return [];
+  }
+
+  Future<bool> setUserScore({
+    required int score,
+    required String token,
+  }) async {
+    final headers = {
+      'Authorization': 'Bearer $token',
+    };
+    final uri = Uri(scheme: 'https', host: _baseUrl, path: '/Name');
+    final body = {
+      'score': score.toString(),
+    };
+    try {
+      final resposne = await http.post(uri, body: body, headers: headers);
+      if (resposne.statusCode == 200 || resposne.statusCode == 201) {
+        return true;
+      }
+      debugPrint(resposne.statusCode.toString());
+      debugPrint(resposne.body);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return false;
   }
 }
 

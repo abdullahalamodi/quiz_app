@@ -1,25 +1,30 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
-import 'package:quiz_app/features/questions/questions_page.dart';
+import 'package:quiz_app/features/home/widgets/quez_me_button.dart';
+import 'package:quiz_app/features/questions/providers/questions_provider.dart';
+import 'package:quiz_app/features/questions/pages/questions_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  var r = -100.0;
-  var n = 0.0;
-  var b = const Size(130, 50);
+class _HomePageState extends ConsumerState<HomePage> {
+  var textPosition = -100.0;
+  var notePosition = 0.0;
+  var buttonSize = const Size(130, 50);
   bool isOut = true;
 
   @override
   void didChangeDependencies() {
-    n = context.h;
+    //load questions when open home
+    ref.watch(questionsProvider.notifier);
+    notePosition = context.h;
     Future.delayed(const Duration(milliseconds: 550), () {
       toggel();
     });
@@ -27,9 +32,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   toggel() {
-    r = isOut ? context.h * 0.12 : -100;
-    n = isOut ? context.h * 0.50 : context.h;
-    b = isOut ? const Size(130, 50) : const Size(200, 100);
+    textPosition = isOut ? context.h * 0.12 : -100;
+    notePosition = isOut ? context.h * 0.3 : context.h;
+    buttonSize = isOut ? const Size(130, 130) : const Size(200, 200);
     isOut = !isOut;
     setState(() {});
   }
@@ -51,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             AnimatedPositioned(
               duration: const Duration(seconds: 1),
-              top: r,
+              top: textPosition,
               curve: Curves.easeInOutBack,
               child: DefaultTextStyle(
                 style: context.tthm.titleLarge!.copyWith(
@@ -73,33 +78,10 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Center(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 1300),
-                width: b.width,
-                height: b.height,
-                curve: Curves.easeOutBack,
-                child: Hero(
-                  tag: 'intro',
-                  child: ElevatedButton(
-                    onPressed: () => animateAndPush(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'quiz me',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: Colors.white,
-                            ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
             AnimatedPositioned(
               duration: const Duration(seconds: 1),
               curve: Curves.easeInOutBack,
-              top: n,
+              top: notePosition,
               width: 300,
               child: Container(
                 padding: const EdgeInsets.all(12),
@@ -131,6 +113,14 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            Positioned(
+                bottom: 60,
+                right: 0,
+                left: 0,
+                child: QuizMeButton(
+                  size: buttonSize,
+                  onTap: () => animateAndPush(),
+                )),
           ],
         ),
       ),
