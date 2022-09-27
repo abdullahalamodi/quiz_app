@@ -43,7 +43,7 @@ class QuestionsPage extends ConsumerWidget {
                     child: Hero(
                       tag: 'intro',
                       child: TimerWidget(
-                        duration: 10, // 120 secound = 2 minutes
+                        duration: 2 * 2, //  2 minutes
                         onComplete: () => onComplete(context, ref),
                       ),
                     ),

@@ -5,14 +5,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
+import 'package:quiz_app/core/theme/theme_colors.dart';
 import 'package:quiz_app/features/layout/widgets/layout_app_par.dart';
 import 'package:quiz_app/features/questions/providers/correct_answers_provider.dart';
 import 'package:quiz_app/features/questions/widgets/question_animated_icon.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CompletePage extends ConsumerWidget {
   const CompletePage({Key? key}) : super(key: key);
 
-  share() {}
+  share(WidgetRef ref) {
+    final text =
+        'I answered ${ref.read(correctAnswersProvider)} correct answers in QuizU!';
+    Share.share(text);
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -80,9 +86,10 @@ class CompletePage extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () => share(),
+                  onPressed: () => share(ref),
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
+                    backgroundColor: primaryColor,
                   ),
                   child: const Text('share'),
                 ),
@@ -91,7 +98,7 @@ class CompletePage extends ConsumerWidget {
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.blue,
                   ),
                   child: const Text('back to home'),
                 ),

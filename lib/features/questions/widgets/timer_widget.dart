@@ -65,7 +65,7 @@ class TimerWidget extends StatelessWidget {
   }
 
   String _formatedTime(double value, int duration) {
-    final time = duration - (value * duration);
+    final time = duration - (value * duration) + 1; // to start from 2:00
     final minutes = time ~/ 60;
     final secounds = (time % 60).toInt();
     return '$minutes:$secounds';

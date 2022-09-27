@@ -29,7 +29,7 @@ class QuestiosPageProvider extends StateNotifier<QuestionsPageState> {
     final score = ref.read(correctAnswersProvider);
     final services = ref.read(apiServicesProvider);
     final token = ref.read(sharedPreferencesProvider).getToken();
-    await services.setUserScore(score: 600, token: token!);
+    await services.setUserScore(score: score, token: token!);
   }
 
   Future<void> submetScore() async {}
