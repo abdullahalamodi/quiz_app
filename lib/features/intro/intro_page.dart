@@ -61,13 +61,15 @@ class IntroPage extends ConsumerWidget {
                             style: context.tthm.titleLarge!.copyWith(
                               fontSize: 26.0,
                               color: Colors.white,
+                              height: 1.2,
                             ),
                             child: AnimatedTextKit(
                               totalRepeatCount: 1,
                               animatedTexts: [
                                 TypewriterAnimatedText(
-                                    speed: const Duration(milliseconds: 70),
-                                    'Welecom to QuizU\nwe are happy to join us,\nlets have some fun.'),
+                                  speed: const Duration(milliseconds: 70),
+                                  'Welecom to QuizU\nwe are happy to join us,\nlets have some fun.',
+                                ),
                               ],
                             ),
                           ),

@@ -32,8 +32,8 @@ class _LeaderboardListState extends ConsumerState<LeaderboardList> {
     return Container(
       color: const Color.fromARGB(31, 189, 189, 189),
       child: SmartRefresher(
+        enablePullUp: false,
         enablePullDown: true,
-        enablePullUp: true,
         header: const WaterDropHeader(
           waterDropColor: primaryColor,
         ),

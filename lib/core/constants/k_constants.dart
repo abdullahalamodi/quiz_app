@@ -19,4 +19,4 @@ const kBoxShadow = BoxShadow(
 
 // pref kies
 const String kUserModel = 'user_model_key';
-const String kToken = 'token_key';
+const String kToken = 'token_key_3';

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
+import 'package:quiz_app/core/theme/theme_colors.dart';
 import 'package:quiz_app/features/layout/widgets/layout_app_par.dart';
 import 'package:quiz_app/features/questions/pages/questions_page.dart';
-import 'package:quiz_app/features/questions/widgets/question_animated_icon.dart';
+import 'package:quiz_app/features/common_widgets/custom_animated_icon.dart';
 
 class WrongAnswerPage extends StatelessWidget {
   const WrongAnswerPage({Key? key}) : super(key: key);
@@ -32,8 +33,8 @@ class WrongAnswerPage extends StatelessWidget {
             Center(
               child: Text(
                 'You choosed wrong answer 🙄,\nbut don\'t worry you can try again.',
-                style: context.tthm.titleLarge!.copyWith(
-                  fontWeight: FontWeight.normal,
+                style: context.tthm.titleMedium!.copyWith(
+                  height: 1.2,
                 ),
               ),
             ),
@@ -42,10 +43,12 @@ class WrongAnswerPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () =>
-                      context.replace(builder: (_) => const QuestionsPage()),
+                  onPressed: () => context.replace(
+                    builder: (_) => const QuestionsPage(),
+                  ),
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
+                    backgroundColor: primaryColor,
                   ),
                   child: const Text('try again'),
                 ),
@@ -54,7 +57,7 @@ class WrongAnswerPage extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.blue,
                   ),
                   child: const Text('back to home'),
                 ),

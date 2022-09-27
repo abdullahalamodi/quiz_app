@@ -6,9 +6,9 @@ import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
 import 'package:quiz_app/core/theme/theme_colors.dart';
+import 'package:quiz_app/features/common_widgets/custom_animated_icon.dart';
 import 'package:quiz_app/features/layout/widgets/layout_app_par.dart';
 import 'package:quiz_app/features/questions/providers/correct_answers_provider.dart';
-import 'package:quiz_app/features/questions/widgets/question_animated_icon.dart';
 import 'package:share_plus/share_plus.dart';
 
 class CompletePage extends ConsumerWidget {
@@ -58,6 +58,7 @@ class CompletePage extends ConsumerWidget {
                     style: context.tthm.titleLarge!.copyWith(
                       fontWeight: FontWeight.normal,
                       color: Colors.green,
+                      height: 1.2,
                     ),
                   ),
                   Padding(
@@ -68,6 +69,7 @@ class CompletePage extends ConsumerWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
                         fontSize: 26,
+                        height: 1.2,
                       ),
                     ),
                   ),
@@ -76,6 +78,7 @@ class CompletePage extends ConsumerWidget {
                     style: context.tthm.titleLarge!.copyWith(
                       fontWeight: FontWeight.normal,
                       color: Colors.green,
+                      height: 1.2,
                     ),
                   ),
                 ],

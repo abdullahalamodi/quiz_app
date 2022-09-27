@@ -43,13 +43,13 @@ class QuestionsPage extends ConsumerWidget {
                     child: Hero(
                       tag: 'intro',
                       child: TimerWidget(
-                        duration: 2 * 2, //  2 minutes
+                        duration: 2 * 60, //  2 minutes
                         onComplete: () => onComplete(context, ref),
                       ),
                     ),
                   ),
                   Positioned(
-                    top: context.h * 0.3,
+                    top: context.h * 0.26,
                     right: 20,
                     left: 20,
                     child: Consumer(

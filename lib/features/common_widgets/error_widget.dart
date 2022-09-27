@@ -19,6 +19,7 @@ class CustomErrorWidget extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             backgroundColor: primaryColor,
+            minimumSize: const Size(100, 40),
           ),
           child: const Text('try again'),
         )

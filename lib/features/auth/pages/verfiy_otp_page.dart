@@ -83,12 +83,11 @@ class VerfiyOtpPage extends ConsumerWidget {
                 'we send pin code to your phone ',
                 style: context.tthm.titleSmall,
               ),
-              const SizedBox(height: 8),
               Directionality(
                 textDirection: TextDirection.ltr,
                 child: Text(
                   provider.phoneNumber!.completeNumber
-                      .replaceRange(5, 10, '#####'),
+                      .replaceRange(5, 10, '*****'),
                   style: context.tthm.bodySmall,
                 ),
               ),

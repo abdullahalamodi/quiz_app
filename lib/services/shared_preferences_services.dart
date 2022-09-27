@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
+import 'package:quiz_app/models/my_score_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferencesServces>((ref) {
@@ -30,5 +31,10 @@ class SharedPreferencesServces {
   String? getToken() {
     final token = prefs.getString(kToken);
     return token;
+  }
+
+  List<MyScoreModel>? getMyscores() {
+    final token = prefs.getString(kToken);
+    return [];
   }
 }

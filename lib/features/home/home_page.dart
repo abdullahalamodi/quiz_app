@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
+import 'package:quiz_app/core/theme/theme_colors.dart';
 import 'package:quiz_app/features/home/widgets/quez_me_button.dart';
 import 'package:quiz_app/features/questions/providers/questions_provider.dart';
 import 'package:quiz_app/features/questions/pages/questions_page.dart';
@@ -61,6 +62,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               child: DefaultTextStyle(
                 style: context.tthm.titleLarge!.copyWith(
                   fontSize: 26.0,
+                  height: 1.2,
                 ),
                 child: FutureBuilder(
                   future:
@@ -70,8 +72,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                           totalRepeatCount: 1,
                           animatedTexts: [
                             TypewriterAnimatedText(
-                                speed: const Duration(milliseconds: 70),
-                                'Are you ready \nto test your knowledge \nand challenge others?'),
+                              speed: const Duration(milliseconds: 70),
+                              'Are you ready \nto test your knowledge \nand challenge others?',
+                            ),
                           ],
                         )
                       : const SizedBox.shrink(),
@@ -87,7 +90,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.blue,
+                    color: primaryColor,
                   ),
                   borderRadius: BorderRadius.circular(kRadius),
                 ),
@@ -97,14 +100,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                     children: [
                       const Icon(
                         Icons.info_outline,
-                        color: Colors.blue,
+                        color: primaryColor,
                       ),
                       const SizedBox(width: 12),
                       Flexible(
                         child: Text(
                           'Answer as much questions correctly within 2 minutes',
-                          style: context.tthm.titleMedium!.copyWith(
-                            fontWeight: FontWeight.w300,
+                          style: context.tthm.bodyMedium!.copyWith(
+                            height: 1.2,
                           ),
                         ),
                       ),

@@ -66,33 +66,22 @@ class AddNamePage extends ConsumerWidget {
                 const SizedBox(height: 8),
                 Text(
                   'enter your name, \nthat will apeare to users in the score list',
-                  style: context.tthm.titleSmall,
+                  style: context.tthm.titleSmall!.copyWith(
+                    height: 1.2,
+                  ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 40),
                 CustomTextField(
                   hint: 'your name',
                   controller: provider.nameController,
                   validator: (val) =>
                       InputValidation.validateName(context, val),
                 ),
-                const SizedBox(height: 10),
-                GestureDetector(
-                  onTap: () => addName(context, provider),
-                  child: Container(
-                    height: 46,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(kRadius),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'add',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: Colors.white,
-                            ),
-                      ),
-                    ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () => addName(context, provider),
+                  child: const Text(
+                    'add',
                   ),
                 ),
                 const SizedBox(height: 6),

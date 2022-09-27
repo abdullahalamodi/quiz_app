@@ -27,14 +27,16 @@ class QuestionWidget extends StatelessWidget {
           height: 60,
           child: Text(
             questionModel.question,
-            style: context.tthm.titleLarge,
+            style: context.tthm.titleLarge!.copyWith(
+              height: 1.2,
+            ),
           ),
         ),
         Column(
           children: [
             ...questionModel.answersMap.keys.map(
               (key) => Container(
-                margin: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   // border: Border.all(color: primaryColor),
                   borderRadius: BorderRadius.circular(kRadius),
@@ -59,6 +61,7 @@ class QuestionWidget extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
                           backgroundColor: Colors.green,
+                          minimumSize: const Size(100, 40),
                         ),
                         child: const Text('skip'),
                       )

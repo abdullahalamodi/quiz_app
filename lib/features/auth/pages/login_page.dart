@@ -52,12 +52,13 @@ class LoginPage extends ConsumerWidget {
                   'Login to QuizU 😋',
                   style: context.tthm.headlineSmall,
                 ),
-                const SizedBox(height: 8),
                 Text(
                   'are you ready,\njust enter your phone to start.',
-                  style: context.tthm.titleSmall,
+                  style: context.tthm.titleSmall!.copyWith(
+                    height: 1.2,
+                  ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 PhoneField(
                   onChanged: (phone) {
                     provider.phoneNumber = phone;
@@ -72,31 +73,10 @@ class LoginPage extends ConsumerWidget {
                 const SizedBox(height: 10),
                 Hero(
                   tag: 'intro',
-                  child: GestureDetector(
-                    onTap: () => validate(context, provider),
-                    child: Container(
-                      height: 46,
-                      width: 120,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(kRadius),
-                      ),
-                      child: Center(
-                        child: FutureBuilder<String>(
-                          // delay to show text after button animated
-                          future: Future.delayed(
-                              const Duration(milliseconds: 500), () => 'login'),
-                          builder: (context, snapshot) => Text(
-                            snapshot.data ?? '',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: Colors.white,
-                                ),
-                          ),
-                        ),
-                      ),
+                  child: ElevatedButton(
+                    onPressed: () => validate(context, provider),
+                    child: const Text(
+                      'login',
                     ),
                   ),
                 ),
