@@ -48,6 +48,7 @@ class ApiServices {
         final userModel = UserModel.fromJson(data);
         // we can use [flutter_secure_storage] for more security
         await _sharedPref.setToken(userModel.token!);
+        await _sharedPref.setMobile(mobile);
         return userModel;
       }
       debugPrint(resposne.statusCode.toString());

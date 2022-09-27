@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/theme/main_theme.dart';
-import 'package:quiz_app/features/auth/providers/token_povider.dart';
 import 'package:quiz_app/features/intro/intro_page.dart';
 
 class QuizApp extends ConsumerWidget {
@@ -9,7 +8,6 @@ class QuizApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(fetchTokenProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme(context),

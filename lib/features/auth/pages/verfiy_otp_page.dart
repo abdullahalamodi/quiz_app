@@ -35,7 +35,7 @@ class VerfiyOtpPage extends ConsumerWidget {
           builder: (_) => const LayoutLanding(),
         );
       } else {
-        context.push(
+        context.replace(
           builder: (_) => const AddNamePage(),
         );
       }
@@ -50,7 +50,6 @@ class VerfiyOtpPage extends ConsumerWidget {
   }
 
   void listenToLoadingState(BuildContext context, AuthState state) {
-    log('VerfiyOtpPage : $state');
     if (state is Loading) {
       LoadingScreen().show(context: context);
     } else {
@@ -65,43 +64,49 @@ class VerfiyOtpPage extends ConsumerWidget {
       authProvider,
       (_, state) => stateListener(context, state),
     );
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        padding: kPagePadding,
-        child: SingleChildScrollView(
-          physics: kPhysics,
-          child: Column(
-            children: [
-              const SizedBox(height: 70),
-              Text(
-                'Verify Phone',
-                style: context.tthm.headlineSmall,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                'we send pin code to your phone ',
-                style: context.tthm.titleSmall,
-              ),
-              Directionality(
-                textDirection: TextDirection.ltr,
-                child: Text(
-                  provider.phoneNumber!.completeNumber
-                      .replaceRange(5, 10, '*****'),
-                  style: context.tthm.bodySmall,
+    return WillPopScope(
+      onWillPop: () async {
+        provider.pinController.clear();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(),
+        body: Container(
+          padding: kPagePadding,
+          child: SingleChildScrollView(
+            physics: kPhysics,
+            child: Column(
+              children: [
+                const SizedBox(height: 70),
+                Text(
+                  'Verify Phone',
+                  style: context.tthm.headlineSmall,
                 ),
-              ),
-              const SizedBox(height: 50),
-              PinCodeField(
-                controller: provider.pinController,
-                onCompleted: (otp) {
-                  if (ref.read(authProvider) is! Loading) {
-                    login(context, provider);
-                  }
-                },
-              ),
-              const SizedBox(height: 30),
-            ],
+                const SizedBox(height: 12),
+                Text(
+                  'we send pin code to your phone ',
+                  style: context.tthm.titleSmall,
+                ),
+                Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Text(
+                    provider.phoneNumber!.completeNumber
+                        .replaceRange(5, 10, '*****'),
+                    style: context.tthm.bodySmall,
+                  ),
+                ),
+                const SizedBox(height: 50),
+                PinCodeField(
+                  controller: provider.pinController,
+                  onCompleted: (otp) {
+                    if (ref.read(authProvider) is! Loading) {
+                      login(context, provider);
+                    }
+                  },
+                ),
+                const SizedBox(height: 30),
+              ],
+            ),
           ),
         ),
       ),

@@ -18,5 +18,5 @@ const kBoxShadow = BoxShadow(
 );
 
 // pref kies
-const String kMyScore = 'my_score_key';
 const String kToken = 'token_key';
+const String kMobile = 'mobile_key';

@@ -42,16 +42,11 @@ class QuestionWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(kRadius),
                   color: primaryColor.withOpacity(.1),
                 ),
-                child: Column(
-                  children: [
-                    if (key == questionModel.correct) const Text('data'),
-                    _answerRow(
-                      context,
-                      char: key,
-                      text: questionModel.answersMap[key]!,
-                      onTap: () => onSelectAnswer(key == questionModel.correct),
-                    ),
-                  ],
+                child: _answerRow(
+                  context,
+                  char: key,
+                  text: questionModel.answersMap[key]!,
+                  onTap: () => onSelectAnswer(key == questionModel.correct),
                 ),
               ),
             ),
@@ -65,7 +60,7 @@ class QuestionWidget extends StatelessWidget {
                         onPressed: onSkip,
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
-                          backgroundColor: Colors.green,
+                          backgroundColor: Colors.blue,
                           minimumSize: const Size(100, 40),
                         ),
                         child: const Text('skip'),

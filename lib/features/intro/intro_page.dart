@@ -14,9 +14,20 @@ import 'package:quiz_app/features/layout/layout_landing.dart';
 class IntroPage extends ConsumerWidget {
   const IntroPage({Key? key}) : super(key: key);
 
+  void checkAndPush(BuildContext context, bool validToken) {
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) =>
+            validToken ? const LayoutLanding() : const LoginPage(),
+        transitionDuration: const Duration(milliseconds: 600),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final validToken = ref.watch(fetchTokenProvider);
+    final asyncValidToken = ref.watch(validateTokenProvider);
     return Scaffold(
       body: Column(
         children: [
@@ -100,20 +111,13 @@ class IntroPage extends ConsumerWidget {
           ),
           Expanded(
             flex: 1,
-            child: validToken.when(
-              data: (data) => Align(
+            child: asyncValidToken.when(
+              data: (validToken) => Align(
                 alignment: Alignment.topRight,
                 widthFactor: 3,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        pageBuilder: (_, __, ___) =>
-                            data ? const LayoutLanding() : const LoginPage(),
-                        transitionDuration: const Duration(milliseconds: 600),
-                      ),
-                    );
+                    checkAndPush(context, validToken);
                   },
                   child: TweenAnimationBuilder<double>(
                     tween: Tween<double>(begin: 0.0, end: 1),
@@ -163,7 +167,7 @@ class IntroPage extends ConsumerWidget {
                   widthFactor: 3,
                   child: CustomErrorWidget(
                     onPressed: () {
-                      ref.refresh(fetchTokenProvider);
+                      ref.refresh(validateTokenProvider);
                     },
                   )),
               loading: () => Align(

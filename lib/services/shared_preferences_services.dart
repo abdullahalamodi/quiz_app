@@ -13,21 +13,25 @@ class SharedPreferencesServces {
   SharedPreferencesServces(this.prefs);
   final SharedPreferences prefs;
 
-  // Future<bool> setUserModel(UserModel userModel) async {
-  //   return await prefs.setString(
-  //     kUserModel,
-  //     json.encode(userModel.toJson()),
-  //   );
-  // }
+  Future<bool> setMobile(String mobile) async {
+    return await prefs.setString(kMobile, mobile);
+  }
 
-  // UserModel? getUserModel() {
-  //   final rawData = prefs.getString(kUserModel);
-  //   if (rawData == null) return null;
-  //   return UserModel.fromJson(json.decode(rawData));
-  // }
+  String getMobile() {
+    final mobile = prefs.getString(kMobile);
+    return mobile!;
+  }
 
   Future<bool> setToken(String token) async {
     return await prefs.setString(kToken, token);
+  }
+
+  Future<bool> removeMobile() async {
+    return await prefs.remove(kMobile);
+  }
+
+  Future<bool> removeToken() async {
+    return await prefs.remove(kToken);
   }
 
   String? getToken() {
@@ -35,8 +39,10 @@ class SharedPreferencesServces {
     return token;
   }
 
+// use mobile for store score to display every account score
   List<MyScoreModel> getMyScores() {
-    final rawJson = prefs.getString(kMyScore);
+    final myScoreKey = getMobile();
+    final rawJson = prefs.getString(myScoreKey);
     if (rawJson == null) return [];
     final data = json.decode(rawJson);
     final myScoresList =
@@ -45,10 +51,11 @@ class SharedPreferencesServces {
   }
 
   Future<bool> addScore(MyScoreModel score) async {
+    final myScoreKey = getMobile();
     final myScoresList = getMyScores();
     myScoresList.add(score);
     final data = myScoresList.map((e) => e.toJson()).toList();
     final rawJson = json.encode(data);
-    return await prefs.setString(kMyScore, rawJson);
+    return await prefs.setString(myScoreKey, rawJson);
   }
 }
