@@ -26,10 +26,12 @@ class LeaderboardPage extends ConsumerWidget {
       loading: () => const Center(
         child: Text('loading data ..'),
       ),
-      error: (_, __) => CustomErrorWidget(
-        onPressed: () {
-          ref.refresh(leaderboardProvider);
-        },
+      error: (_, __) => Center(
+        child: CustomErrorWidget(
+          onPressed: () {
+            ref.refresh(leaderboardProvider);
+          },
+        ),
       ),
     );
   }

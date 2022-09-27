@@ -18,7 +18,7 @@ class QuestionsPage extends ConsumerWidget {
 
   onComplete(BuildContext context, WidgetRef ref) {
     log(ref.read(correctAnswersProvider).toString());
-    // ref.read(questionsProvider.notifier).setScore();
+    ref.read(questionsProvider.notifier).setScore();
     context.replace(builder: (_) => const CompletePage());
   }
 
@@ -43,7 +43,7 @@ class QuestionsPage extends ConsumerWidget {
                     child: Hero(
                       tag: 'intro',
                       child: TimerWidget(
-                        duration: 120, // 120 secound = 2 minutes
+                        duration: 10, // 120 secound = 2 minutes
                         onComplete: () => onComplete(context, ref),
                       ),
                     ),

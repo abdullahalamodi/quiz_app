@@ -10,6 +10,7 @@ class QuizApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(fetchTokenProvider);
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: IntroPage(),
     );
   }

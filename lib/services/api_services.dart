@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -45,6 +46,7 @@ class ApiServices {
       if (resposne.statusCode == 200 || resposne.statusCode == 201) {
         final data = json.decode(resposne.body);
         final userModel = UserModel.fromJson(data);
+        // we can use [flutter_secure_storage] for more security
         await _sharedPref.setToken(userModel.token!);
         return userModel;
       }
@@ -72,7 +74,6 @@ class ApiServices {
       if (resposne.statusCode == 200 || resposne.statusCode == 201) {
         final data = json.decode(resposne.body);
         final userModel = UserModel.fromJson(data);
-        await _sharedPref.setUserModel(userModel);
         return userModel;
       }
       debugPrint(resposne.statusCode.toString());
@@ -140,13 +141,15 @@ class ApiServices {
     final headers = {
       'Authorization': 'Bearer $token',
     };
-    final uri = Uri(scheme: 'https', host: _baseUrl, path: '/Name');
+    final uri = Uri(scheme: 'https', host: _baseUrl, path: '/Score');
     final body = {
       'score': score.toString(),
     };
     try {
       final resposne = await http.post(uri, body: body, headers: headers);
       if (resposne.statusCode == 200 || resposne.statusCode == 201) {
+        final data = json.decode(resposne.body);
+        log(data['message']);
         return true;
       }
       debugPrint(resposne.statusCode.toString());

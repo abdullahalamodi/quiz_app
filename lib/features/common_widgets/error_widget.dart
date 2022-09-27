@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/theme/theme_colors.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({
@@ -16,6 +17,9 @@ class CustomErrorWidget extends StatelessWidget {
         const SizedBox(height: 8),
         ElevatedButton(
           onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+          ),
           child: const Text('try again'),
         )
       ],

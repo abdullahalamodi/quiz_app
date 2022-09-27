@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color primaryColor = Colors.blue;
+const Color primaryColor = Color(0xFF9768FF);
 const Color primaryVeriantColor = Color(0xFF9768FF);
 const Color secondaryColor = Color(0xFF7BA739);
 const Color secondaryVeriantColor = Color(0xFFD83A56);

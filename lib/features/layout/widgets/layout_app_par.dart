@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/constants/fixed_assets.dart';
+import 'package:quiz_app/core/theme/theme_colors.dart';
 
 class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
   const LayoutAppBar({
@@ -9,6 +10,7 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: primaryColor,
       title: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Row(
