@@ -159,6 +159,30 @@ class ApiServices {
     }
     return false;
   }
+
+  Future<UserModel?> getUserInfo({
+    required String token,
+  }) async {
+    final headers = {
+      'Authorization': 'Bearer $token',
+    };
+    final uri = Uri(scheme: 'https', host: _baseUrl, path: '/UserInfo');
+
+    try {
+      final resposne = await http.get(uri, headers: headers);
+      if (resposne.statusCode == 200 || resposne.statusCode == 201) {
+        final data = json.decode(resposne.body);
+        final userModel = UserModel.fromJson(data);
+        return userModel;
+      }
+      debugPrint(resposne.statusCode.toString());
+      debugPrint(resposne.body);
+    } catch (e) {
+      debugPrint('getUserInfo');
+      debugPrint(e.toString());
+    }
+    return null;
+  }
 }
 
 const _baseUrl = 'quizu.okoul.com';

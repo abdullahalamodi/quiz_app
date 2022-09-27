@@ -11,7 +11,15 @@ class LeaderboardPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncList = ref.watch(leaderboardProvider);
     return asyncList.when(
-      data: (data) => LeaderboardList(items: data),
+      data: (data) => data.isNotEmpty
+          ? LeaderboardList(items: data)
+          : Center(
+              child: CustomErrorWidget(
+                onPressed: () {
+                  ref.refresh(leaderboardProvider);
+                },
+              ),
+            ),
       loading: () => const Center(
         child: Text('loading data ..'),
       ),

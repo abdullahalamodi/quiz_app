@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
-import 'package:quiz_app/core/theme/theme_colors.dart';
 import 'package:quiz_app/models/my_score_model.dart';
 
 class MyScoreListItem extends ConsumerWidget {
@@ -25,7 +24,7 @@ class MyScoreListItem extends ConsumerWidget {
       child: Row(
         children: [
           Text(
-            '2008 00',
+            item.formatedDate,
             style: context.tthm.titleMedium,
           ),
           const Spacer(),
@@ -36,20 +35,20 @@ class MyScoreListItem extends ConsumerWidget {
                 height: 46,
                 width: 46,
                 child: TweenAnimationBuilder<double>(
-                  tween: Tween<double>(begin: 0.0, end: 1),
+                  tween: Tween<double>(begin: 0.0, end: item.scorePrecentage),
                   curve: Curves.easeOutCubic,
                   duration: const Duration(seconds: 2),
                   builder: (context, value, _) => CircularProgressIndicator(
                     value: value,
                     strokeWidth: 3,
-                    color: Colors.green,
+                    color: item.color,
                   ),
                 ),
               ),
               Text(
-                '${33}',
+                '${item.score}',
                 style: context.tthm.titleMedium!.copyWith(
-                  color: primaryColor,
+                  color: item.color,
                 ),
               )
             ],

@@ -42,11 +42,16 @@ class QuestionWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(kRadius),
                   color: primaryColor.withOpacity(.1),
                 ),
-                child: _answerRow(
-                  context,
-                  char: key,
-                  text: questionModel.answersMap[key]!,
-                  onTap: () => onSelectAnswer(key == questionModel.correct),
+                child: Column(
+                  children: [
+                    if (key == questionModel.correct) const Text('data'),
+                    _answerRow(
+                      context,
+                      char: key,
+                      text: questionModel.answersMap[key]!,
+                      onTap: () => onSelectAnswer(key == questionModel.correct),
+                    ),
+                  ],
                 ),
               ),
             ),

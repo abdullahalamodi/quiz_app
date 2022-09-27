@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
 import 'package:quiz_app/core/theme/theme_colors.dart';
+import 'package:quiz_app/models/user_model.dart';
 
 class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({Key? key}) : super(key: key);
+  const ProfileWidget({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+  final UserModel? user;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +35,13 @@ class ProfileWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Abdullah alamodi',
+              user?.name ?? 'Abdullah alamodi',
               style: context.tthm.titleLarge!.copyWith(
                 height: 1.2,
               ),
             ),
             Text(
-              '+966 556677889',
+              user?.mobile ?? '+966 00000000',
               style: context.tthm.titleMedium,
             ),
           ],

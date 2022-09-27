@@ -18,5 +18,5 @@ const kBoxShadow = BoxShadow(
 );
 
 // pref kies
-const String kUserModel = 'user_model_key';
-const String kToken = 'token_key_3';
+const String kMyScore = 'my_score_key';
+const String kToken = 'token_key';

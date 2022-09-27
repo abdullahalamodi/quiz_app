@@ -3,6 +3,7 @@ import 'package:quiz_app/features/questions/providers/correct_answers_provider.d
 import 'package:quiz_app/features/questions/providers/question_index_provider.dart';
 import 'package:quiz_app/features/questions/providers/question_page_state.dart';
 import 'package:quiz_app/features/questions/providers/skip_provider.dart';
+import 'package:quiz_app/models/my_score_model.dart';
 import 'package:quiz_app/services/api_services.dart';
 import 'package:quiz_app/services/shared_preferences_services.dart';
 
@@ -28,8 +29,12 @@ class QuestiosPageProvider extends StateNotifier<QuestionsPageState> {
   Future<void> setScore() async {
     final score = ref.read(correctAnswersProvider);
     final services = ref.read(apiServicesProvider);
-    final token = ref.read(sharedPreferencesProvider).getToken();
+    final pref = ref.read(sharedPreferencesProvider);
+    final token = pref.getToken();
     await services.setUserScore(score: score, token: token!);
+    await pref.addScore(
+      MyScoreModel.fromScore(score: score),
+    );
   }
 
   Future<void> submetScore() async {}

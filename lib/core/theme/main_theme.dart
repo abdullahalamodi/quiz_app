@@ -31,13 +31,13 @@ class AppTheme {
         fontFamily: FixedAssets.cairo,
         textTheme: Theme.of(context)
             .textTheme
-            .apply(
-              fontFamily: FixedAssets.cairo,
-            )
             .copyWith(
               bodyMedium: context.tthm.bodyMedium!.copyWith(
                 height: 1.2,
               ),
+            )
+            .apply(
+              fontFamily: FixedAssets.cairo,
             ),
       );
 }

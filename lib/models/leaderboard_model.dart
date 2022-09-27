@@ -24,7 +24,7 @@ class LeaderBoardModel with _$LeaderBoardModel {
     if (validScore >= 25) {
       return Colors.green;
     } else if (validScore >= 20) {
-      return Colors.yellow;
+      return Colors.amber;
     } else if (validScore >= 15) {
       return Colors.orange;
     } else {

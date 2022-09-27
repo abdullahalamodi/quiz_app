@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/models/my_score_model.dart';
@@ -33,8 +35,20 @@ class SharedPreferencesServces {
     return token;
   }
 
-  List<MyScoreModel>? getMyscores() {
-    final token = prefs.getString(kToken);
-    return [];
+  List<MyScoreModel> getMyScores() {
+    final rawJson = prefs.getString(kMyScore);
+    if (rawJson == null) return [];
+    final data = json.decode(rawJson);
+    final myScoresList =
+        List<MyScoreModel>.from(data.map((e) => MyScoreModel.fromJson(e)));
+    return myScoresList;
+  }
+
+  Future<bool> addScore(MyScoreModel score) async {
+    final myScoresList = getMyScores();
+    myScoresList.add(score);
+    final data = myScoresList.map((e) => e.toJson()).toList();
+    final rawJson = json.encode(data);
+    return await prefs.setString(kMyScore, rawJson);
   }
 }

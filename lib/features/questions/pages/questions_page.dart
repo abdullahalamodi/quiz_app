@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
@@ -17,7 +15,8 @@ class QuestionsPage extends ConsumerWidget {
   const QuestionsPage({Key? key}) : super(key: key);
 
   onComplete(BuildContext context, WidgetRef ref) {
-    log(ref.read(correctAnswersProvider).toString());
+    // answer 0 questions
+    if (ref.read(correctAnswersProvider) == 0) return;
     ref.read(questionsProvider.notifier).setScore();
     context.replace(builder: (_) => const CompletePage());
   }
