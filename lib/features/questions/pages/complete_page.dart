@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
 import 'package:quiz_app/features/layout/widgets/layout_app_par.dart';
@@ -20,14 +23,19 @@ class CompletePage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Hero(
+            Hero(
               tag: 'intro',
-              child: QuestionAnimatedIcon(
-                height: 200,
-                color: Colors.red,
+              child: CustomAnimatedIcon(
+                child: Transform.rotate(
+                  angle: -pi / 12.0,
+                  child: Image.asset(
+                    FixedAssets.trophy,
+                    height: 200,
+                  ),
+                ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Center(
               child: Column(
                 children: [

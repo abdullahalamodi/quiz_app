@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:im_animations/im_animations.dart';
 import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
@@ -47,8 +46,8 @@ class IntroPage extends ConsumerWidget {
                           tween: Tween<double>(begin: 0.0, end: 120),
                           curve: Curves.bounceInOut,
                           duration: const Duration(seconds: 1),
-                          builder: (context, value, _) => SvgPicture.asset(
-                            FixedAssets.qMark,
+                          builder: (context, value, _) => Image.asset(
+                            FixedAssets.questionMark,
                             height: value,
                             color: Colors.white,
                           ),
@@ -82,8 +81,8 @@ class IntroPage extends ConsumerWidget {
                           duration: const Duration(seconds: 1),
                           builder: (context, value, _) => RotatedBox(
                             quarterTurns: 1,
-                            child: SvgPicture.asset(
-                              FixedAssets.qMark,
+                            child: Image.asset(
+                              FixedAssets.questionMark,
                               height: value,
                               color: Colors.white,
                             ),

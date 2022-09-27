@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/constants/fixed_assets.dart';
 
 class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -16,8 +15,8 @@ class LayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             const Text('QuizU'),
             const SizedBox(width: 12),
-            SvgPicture.asset(
-              FixedAssets.qMark,
+            Image.asset(
+              FixedAssets.questionMark,
               height: 30,
             ),
           ],

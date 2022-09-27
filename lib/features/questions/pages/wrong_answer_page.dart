@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/constants/k_constants.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
 import 'package:quiz_app/features/layout/widgets/layout_app_par.dart';
@@ -17,11 +18,14 @@ class WrongAnswerPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Hero(
+            Hero(
               tag: 'intro',
-              child: QuestionAnimatedIcon(
-                height: 200,
-                color: Colors.red,
+              child: CustomAnimatedIcon(
+                child: Image.asset(
+                  FixedAssets.questionMark,
+                  height: 200,
+                  color: Colors.red,
+                ),
               ),
             ),
             const SizedBox(height: 20),
