@@ -44,7 +44,7 @@ class AuthProvider extends StateNotifier<AuthState> {
 
   Future<void> addName(String name) async {
     state = const AuthState.loading();
-    final token = ref.read(sharedPreferencesProvider).getUserModel()?.token;
+    final token = ref.read(sharedPreferencesProvider).getToken();
     final resposne = await _apiServices.addName(
       name: name,
       token: token!,

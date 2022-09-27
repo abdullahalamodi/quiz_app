@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -46,7 +45,7 @@ class ApiServices {
       if (resposne.statusCode == 200 || resposne.statusCode == 201) {
         final data = json.decode(resposne.body);
         final userModel = UserModel.fromJson(data);
-        await _sharedPref.setUserModel(userModel);
+        await _sharedPref.setToken(userModel.token!);
         return userModel;
       }
       debugPrint(resposne.statusCode.toString());
@@ -95,7 +94,6 @@ class ApiServices {
     try {
       final resposne = await http.get(uri, headers: headers);
       if (resposne.statusCode == 200 || resposne.statusCode == 201) {
-        log(resposne.body);
         final data = json.decode(resposne.body);
         final leaderboardList = List<LeaderBoardModel>.from(
             data.map((e) => LeaderBoardModel.fromJson(e)));
@@ -121,7 +119,6 @@ class ApiServices {
     try {
       final resposne = await http.get(uri, headers: headers);
       if (resposne.statusCode == 200 || resposne.statusCode == 201) {
-        log(resposne.body);
         final data = json.decode(resposne.body);
         final questiosList = List<QuestionModel>.from(
             data.map((e) => QuestionModel.fromJson(e)));

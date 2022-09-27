@@ -50,6 +50,7 @@ class VerfiyOtpPage extends ConsumerWidget {
   }
 
   void listenToLoadingState(BuildContext context, AuthState state) {
+    log('VerfiyOtpPage : $state');
     if (state is Loading) {
       LoadingScreen().show(context: context);
     } else {

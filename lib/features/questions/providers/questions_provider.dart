@@ -19,7 +19,7 @@ class QuestiosPageProvider extends StateNotifier<QuestionsPageState> {
 
   Future<void> getQuestionList() async {
     final services = ref.read(apiServicesProvider);
-    final token = ref.read(sharedPreferencesProvider).getUserModel()!.token;
+    final token = ref.read(sharedPreferencesProvider).getToken();
 
     final questions = await services.getQuestionsList(token: token!);
     state = QuestionsPageState.data(questions);

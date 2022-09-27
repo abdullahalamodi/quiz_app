@@ -32,10 +32,11 @@ class IntroPage extends ConsumerWidget {
                   width: double.infinity,
                   padding: kPagePadding,
                   decoration: BoxDecoration(
-                      color: primaryColor,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(value),
-                      )),
+                    color: primaryColor,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(value),
+                    ),
+                  ),
                   child: Stack(
                     children: [
                       const SizedBox(height: 20),

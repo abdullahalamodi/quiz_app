@@ -6,7 +6,6 @@ import 'package:quiz_app/core/extentions/build_context_extentions.dart';
 import 'package:quiz_app/features/auth/providers/auth_provider.dart';
 import 'package:quiz_app/features/auth/providers/auth_state.dart';
 import 'package:quiz_app/features/common_widgets/custom_text_field.dart';
-import 'package:quiz_app/features/common_widgets/loading_overlay.dart';
 import 'package:quiz_app/features/layout/layout_landing.dart';
 
 class AddNamePage extends ConsumerWidget {
@@ -25,7 +24,6 @@ class AddNamePage extends ConsumerWidget {
     final BuildContext context,
     final AuthState state,
   ) {
-    listenToLoadingState(context, state);
     if (state is NameAdd) {
       context.push(
         builder: (_) => const LayoutLanding(),
@@ -37,14 +35,6 @@ class AddNamePage extends ConsumerWidget {
           backgroundColor: Colors.red,
         ),
       );
-    }
-  }
-
-  void listenToLoadingState(BuildContext context, AuthState state) {
-    if (state is Loading) {
-      LoadingScreen().show(context: context);
-    } else {
-      LoadingScreen().hide();
     }
   }
 
