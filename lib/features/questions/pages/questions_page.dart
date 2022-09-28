@@ -16,7 +16,6 @@ class QuestionsPage extends ConsumerWidget {
 
   onComplete(BuildContext context, WidgetRef ref) {
     // answer 0 questions
-    if (ref.read(correctAnswersProvider) == 0) return;
     ref.read(questionsProvider.notifier).setScore();
     context.replace(builder: (_) => const CompletePage());
   }
@@ -56,6 +55,7 @@ class QuestionsPage extends ConsumerWidget {
                         final index = ref.watch(currentQuestionIndexProvider);
                         return QuestionWidget(
                           questionModel: data[index],
+                          currentQuestionText: '${index + 1} / ${data.length}',
                           onSelectAnswer: (correct) {
                             if (!correct) {
                               //wrong answer

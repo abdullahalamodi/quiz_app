@@ -12,19 +12,35 @@ class QuestionWidget extends StatelessWidget {
     required this.questionModel,
     required this.onSelectAnswer,
     required this.onSkip,
+    required this.currentQuestionText,
   }) : super(key: key);
 
   final QuestionModel questionModel;
   final Function(bool correct) onSelectAnswer;
   final VoidCallback onSkip;
+  final String currentQuestionText;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+          decoration: BoxDecoration(
+            color: primaryColor.withOpacity(.15),
+            borderRadius: BorderRadius.circular(kRadius),
+          ),
+          child: Text(
+            currentQuestionText,
+            style: context.tthm.titleMedium!.copyWith(
+              color: primaryColor,
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
         SizedBox(
-          height: 60,
+          height: 50,
           child: Text(
             questionModel.question,
             style: context.tthm.titleLarge!.copyWith(

@@ -37,6 +37,9 @@ class CompletePage extends ConsumerWidget {
                   child: Image.asset(
                     FixedAssets.trophy,
                     height: 200,
+                    color: ref.read(correctAnswersProvider) == 0
+                        ? Colors.black12
+                        : null,
                   ),
                 ),
               ),
