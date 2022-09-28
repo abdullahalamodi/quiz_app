@@ -33,11 +33,13 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   toggel() {
-    textPosition = isOut ? context.h * 0.12 : -100;
-    notePosition = isOut ? context.h * 0.3 : context.h;
-    buttonSize = isOut ? const Size(130, 130) : const Size(200, 200);
-    isOut = !isOut;
-    setState(() {});
+    if (mounted) {
+      textPosition = isOut ? context.h * 0.12 : -100;
+      notePosition = isOut ? context.h * 0.3 : context.h;
+      buttonSize = isOut ? const Size(130, 130) : const Size(200, 200);
+      isOut = !isOut;
+      setState(() {});
+    }
   }
 
   void animateAndPush() {
