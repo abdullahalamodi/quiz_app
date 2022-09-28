@@ -1,16 +1,60 @@
 # quiz_app
 
-A new Flutter project.
+Are you ready \nto test your knowledge \nand challenge others?
 
-## Getting Started
+## important !!
 
-This project is a starting point for a Flutter application.
+this app using code generation with freezed package 
+before you run the app 
+you need to run build runner command 
 
-A few resources to get you started if this is your first Flutter project:
+first get packages
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+flutter pub get 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+
+then run
+
+```
+flutter pub run build_runner build --delete-conflicting-outputs
+
+```
+
+after that you can run the app 
+
+```
+ flutter run
+
+```
+
+if you need to run on ios fires you need to add ios paltform 
+
+```
+ flutter create --platforms=ios .
+
+```
+
+
+
+# dimo images
+
+![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/1.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/2.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/3.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/4.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/5.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/6.png?raw=true)
+
+
+
+# apk file 
+
+you can downlaod app form here 
+
+- [Lab: apk ](https://flutter.dev/docs/get-started/codelab)
+
+
+
+# created with 💙 by abdullah alamodi 
