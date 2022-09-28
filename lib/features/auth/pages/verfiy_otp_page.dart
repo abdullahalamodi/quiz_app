@@ -31,8 +31,9 @@ class VerfiyOtpPage extends ConsumerWidget {
     listenToLoadingState(context, state);
     if (state is LoggedIn) {
       if (state.userModel.name != null) {
-        context.push(
-          builder: (_) => const LayoutLanding(),
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => const LayoutLanding()),
+          (route) => false,
         );
       } else {
         context.replace(
