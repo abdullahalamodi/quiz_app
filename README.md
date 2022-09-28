@@ -1,6 +1,6 @@
 # quiz_app
 
-Are you ready \nto test your knowledge \nand challenge others?
+Are you ready to test your knowledge and challenge others?
 
 ## important !!
 
