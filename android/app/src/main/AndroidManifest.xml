@@ -1,9 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.quiz_app">
-
-<uses-permission android:name="android.permission.INTERNET"/>
-
-    
+    package="com.alamodi.quiz_app">
    <application
         android:label="quiz_app"
         android:name="${applicationName}"
