@@ -15,8 +15,10 @@ class QuestionsPage extends ConsumerWidget {
   const QuestionsPage({Key? key}) : super(key: key);
 
   onComplete(BuildContext context, WidgetRef ref) {
-    // answer 0 questions
-    ref.read(questionsProvider.notifier).setScore();
+    //not save score when answer 0 questions
+    if (ref.read(correctAnswersProvider) > 0) {
+      ref.read(questionsProvider.notifier).setScore();
+    }
     context.replace(builder: (_) => const CompletePage());
   }
 

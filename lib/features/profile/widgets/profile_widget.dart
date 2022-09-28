@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiz_app/core/constants/fixed_assets.dart';
 import 'package:quiz_app/core/extentions/build_context_extentions.dart';
 import 'package:quiz_app/core/theme/theme_colors.dart';
+import 'package:quiz_app/features/auth/pages/login_page.dart';
 import 'package:quiz_app/features/common_widgets/show_alert_dialog.dart';
-import 'package:quiz_app/features/intro/intro_page.dart';
 import 'package:quiz_app/features/layout/provider/layout_provider.dart';
 import 'package:quiz_app/models/user_model.dart';
 import 'package:quiz_app/services/shared_preferences_services.dart';
@@ -31,7 +31,7 @@ class ProfileWidget extends ConsumerWidget {
       await ref.read(sharedPreferencesProvider).removeToken();
       await ref.read(sharedPreferencesProvider).removeMobile();
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => const IntroPage()),
+        MaterialPageRoute(builder: (_) => const LoginPage()),
         (route) => false,
       );
       ref.refresh(layoutProvider);
