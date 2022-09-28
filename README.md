@@ -40,12 +40,12 @@ if you need to run on ios fires you need to add ios paltform
 
 # dimo images
 
-![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/1.png?raw=true)
-![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/2.png?raw=true)
-![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/3.png?raw=true)
-![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/4.png?raw=true)
-![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/5.png?raw=true)
-![](https://github.com/abdullahalamodi/quiz_app/blob/main/assets/demo/6.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/master/assets/demo//1.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/master/assets/demo/2.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/master/assets/demo/3.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/master/assets/demo/4.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/master/assets/demo/5.png?raw=true)
+![](https://github.com/abdullahalamodi/quiz_app/blob/master/assets/demo/6.png?raw=true)
 
 
 
@@ -53,8 +53,8 @@ if you need to run on ios fires you need to add ios paltform
 
 you can downlaod app form here 
 
-- [Lab: apk ](https://flutter.dev/docs/get-started/codelab)
+- [App: apk   ](https://flutter.dev/docs/get-started/codelab)
 
 
 
-# created with 💙 by abdullah alamodi 
+ created with 💙 by abdullah alamodi 
