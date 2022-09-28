@@ -21,7 +21,8 @@ class VerfiyOtpPage extends ConsumerWidget {
     final mobile = provider.phoneNumber!.completeNumber;
     final otp = provider.pinController.text;
     log(provider.phoneNumber!.completeNumber);
-    provider.login(mobile, otp);
+    await provider.login(mobile, otp);
+    provider.pinController.clear();
   }
 
   void stateListener(
@@ -61,6 +62,7 @@ class VerfiyOtpPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final provider = ref.watch(authProvider.notifier);
+    final state = ref.watch(authProvider);
     ref.listen<AuthState>(
       authProvider,
       (_, state) => stateListener(context, state),
@@ -100,7 +102,7 @@ class VerfiyOtpPage extends ConsumerWidget {
                 PinCodeField(
                   controller: provider.pinController,
                   onCompleted: (otp) {
-                    if (ref.read(authProvider) is! Loading) {
+                    if (state is! Loading) {
                       login(context, provider);
                     }
                   },
